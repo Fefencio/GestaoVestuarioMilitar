@@ -44,9 +44,10 @@
     <Compile Include="DistribuicaoFarda.cs" />
     <Compile Include="Farda.cs" />
     <Compile Include="Militar.cs" />
-    <Compile Include="MilitarNumeroVestuarioFarda.cs" />
+    <Compile Include="MilitarVestuarioFardaNumeroVestuario.cs" />
     <Compile Include="MovimentoStock.cs" />
     <Compile Include="NivelAcesso.cs" />
+    <Compile Include="NumeroVestuario.cs" />
     <Compile Include="Permissao.cs" />
     <Compile Include="PermissaoNivelAcesso.cs" />
     <Compile Include="PermissaoUtilizador.cs" />
@@ -55,6 +56,8 @@
     <Compile Include="Utilizador.cs" />
     <Compile Include="Vestuario.cs" />
     <Compile Include="VestuarioDistribuicao.cs" />
+    <Compile Include="VestuarioFarda.cs" />
+    <Compile Include="VestuarioFardaNumeroVestuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class PermissaoNivelAcesso
+    public class PermissaoNivelAcesso
     {
+        public int ID { get; set; }
+        public int IdPermissao { get; set; }
+        public int IdNivel { get; set; }
+
+        public PermissaoNivelAcesso()
+        {
+
+        }
+        public PermissaoNivelAcesso(int id, int idPermissao, int idNivel)
+        {
+            this.ID = id;
+            this.IdPermissao = idPermissao;
+            this.IdNivel = idNivel;
+        }
     }
 }

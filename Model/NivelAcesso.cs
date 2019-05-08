@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class NivelAcesso
+    public class NivelAcesso
     {
+
+        public int ID { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
+
+        public NivelAcesso()
+        {
+
+        }
+        public NivelAcesso(int id, string nome, string descricao)
+        {
+
+        }
     }
 }

@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Vestuario
+    public class NumeroVestuario
     {
-
         public int ID { get; set; }
-        public string Nome { get; set; }
+        public string Numero { get; set; }
         public string Descricao { get; set; }
-
-        public Vestuario()
+        public NumeroVestuario()
         {
 
         }
-        public Vestuario(int id, string nome, string descricao)
+        public NumeroVestuario(int id, string numero, string descricao)
         {
             this.ID = id;
-            this.Nome = nome;
+            this.Numero = numero;
             this.Descricao = descricao;
         }
     }
