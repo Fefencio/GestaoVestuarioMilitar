@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D6300D61-42E4-4076-B35B-9749649C34B6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GestaoVestuario</RootNamespace>
+    <AssemblyName>GestaoVestuario</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Foras-Armadas-Angolana.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\SistemaGestaoProcessosAuditoria\projecto_Avelino\bin\Debug\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmFarda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFarda.Designer.cs">
+      <DependentUpon>frmFarda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMilitar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMilitar.Designer.cs">
+      <DependentUpon>frmMilitar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSerie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSerie.Designer.cs">
+      <DependentUpon>frmSerie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVestuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVestuario.Designer.cs">
+      <DependentUpon>frmVestuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmFarda.resx">
+      <DependentUpon>frmFarda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMilitar.resx">
+      <DependentUpon>frmMilitar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSerie.resx">
+      <DependentUpon>frmSerie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVestuario.resx">
+      <DependentUpon>frmVestuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{22493F17-6969-4D54-89A1-B24556352893}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{B21A027A-61EF-414C-996F-FCCA4A1805F6}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_12209.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\92-929355_call-center-help-desk-logistic-man-paperwork-receptionist-paperwork-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46057.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\126441.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\27586.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\74796-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-military-computer-icons-army-hat-clip-art-5afe11dd3fe639.3240642515266001572617.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SummerIcons-66-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20494.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Entrega.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-logistics-computer-icons-delivery-freight-transpor-icon-png-logistic-download-5ab0d189d500c9.0724130315215374178725.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-logistics-computer-icons-delivery-freight-transpor-icon-png-logistic-download-5ab0d189d500c9.07241303152153741787251.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46139.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\general-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Foras-Armadas-Angolana.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

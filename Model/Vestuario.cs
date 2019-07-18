@@ -17,11 +17,21 @@ namespace Model
         {
 
         }
+        public Vestuario(int id)
+        {
+            this.ID = id;
+        }
         public Vestuario(int id, string nome, string descricao)
         {
             this.ID = id;
             this.Nome = nome;
             this.Descricao = descricao;
+        }
+
+        public Vestuario(string nome, string descricao)
+        {
+            Nome = nome;
+            Descricao = descricao;
         }
     }
 }

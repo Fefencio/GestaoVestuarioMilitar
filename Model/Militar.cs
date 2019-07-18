@@ -13,20 +13,34 @@ namespace Model
         public DateTime  DataNascimento { get; set; }
         public string BI { get; set; }
         public string Telefone { get; set; }
+        public string Email { get; set; }
         public string Morada { get; set; }
+        public bool Estado { get; set; }
 
         public Militar()
         {
 
         }
-        public Militar(int id, string nome, DateTime dataNascimento, string bi, string telefone, string morada)
+        public Militar(string nome, DateTime dataNascimento, string bi, string telefone, string email, string morada, bool estado)
+        {
+            this.Nome = nome;
+            this.DataNascimento = dataNascimento;
+            this.BI = bi;
+            this.Telefone = telefone;
+            this.Email = email;
+            this.Morada = morada;
+            this.Estado = estado;
+        }
+        public Militar(int id, string nome, DateTime dataNascimento, string bi, string telefone, string email, string morada, bool estado)
         {
             this.ID = id;
             this.Nome = nome;
             this.DataNascimento = dataNascimento;
             this.BI = bi;
             this.Telefone = telefone;
+            this.Email = email;
             this.Morada = morada;
+            this.Estado = estado;
         }
     }
 }
