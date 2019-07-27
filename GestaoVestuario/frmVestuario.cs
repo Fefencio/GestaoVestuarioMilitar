@@ -1,6 +1,8 @@
 ﻿using BLL;
 using Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GestaoVestuario
@@ -11,6 +13,8 @@ namespace GestaoVestuario
         bool isUpdate = false;
 
         Vestuario vestuario = new Vestuario();
+        Dictionary<string, int> LNumeros = new Dictionary<string, int>();
+
 
         public frmVestuario(int index)
         {
@@ -74,6 +78,9 @@ namespace GestaoVestuario
         {
             txtNome.Text = string.Empty;
             txtDescricao.Text = string.Empty;
+            txtNumero.Text = string.Empty;
+            lbNumeros.Items.Clear();
+            LNumeros.Clear();
 
             vestuario.ID = 0;
         }
@@ -125,6 +132,14 @@ namespace GestaoVestuario
                 string nome = txtNome.Text.Trim().ToUpper();
                 string descricao = txtDescricao.Text.Trim();
 
+                List<NumeroVestuario> numeros = new List<NumeroVestuario>();
+                foreach (string item in lbNumeros.Items)
+                {
+                    int id = 0;
+                    LNumeros.TryGetValue(item, out id);
+                    numeros.Add(new NumeroVestuario(id, item));
+                }
+
                 if (string.IsNullOrEmpty(nome))
                 {
                     errorProvider1.SetError(txtNome, "Insira um Nome para a Vestuario");
@@ -134,7 +149,7 @@ namespace GestaoVestuario
                 NVestuario nVestuario = new NVestuario();
                 if (isInsert)
                 {
-                    string resposta = nVestuario.Insert(new Vestuario(nome, descricao));
+                    string resposta = nVestuario.Insert(new Vestuario(nome, descricao, numeros));
                     int id = 0;
                     if (!int.TryParse(resposta, out id))
                     {
@@ -153,7 +168,7 @@ namespace GestaoVestuario
                         tabControl1.SelectedIndex = 0;
                         return;
                     }
-                    string resposta = nVestuario.Update(new Vestuario(vestuario.ID, nome, descricao));
+                    string resposta = nVestuario.Update(new Vestuario(vestuario.ID, nome, descricao, numeros));
                     if (!resposta.Equals("OK"))
                     {
                         MessageBox.Show("Não foi possível Editar a Vestuario.\r\nErro: " + resposta,
@@ -181,6 +196,11 @@ namespace GestaoVestuario
                 txtNome.Text = dgvLista.CurrentRow.Cells["Vestuario"].Value.ToString();
                 txtDescricao.Text = dgvLista.CurrentRow.Cells["Descrição"].Value.ToString();
 
+                LNumeros.Clear();
+                LNumeros = new NVestuario().ListarNumerosNomeID(new Vestuario(vestuario.ID));
+                lbNumeros.Items.Clear();
+                lbNumeros.Items.AddRange(LNumeros.Keys.ToArray());
+
                 isInsert = false;
                 isUpdate = false;
                 HablitarBotons();
@@ -193,6 +213,29 @@ namespace GestaoVestuario
         {
             vestuario.Nome = txtFiltro.Text;
             Selecionar(vestuario);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (!(string.IsNullOrWhiteSpace(txtNumero.Text)) 
+                && (!lbNumeros.Items.Contains(txtNumero.Text.ToUpper())))
+            {
+                lbNumeros.Items.Add(txtNumero.Text.ToUpper());
+                txtNumero.Text = string.Empty;
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            lbNumeros.Items.Remove(txtNumero.Text.ToUpper());
+        }
+
+        private void txtNumero_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnAdd.PerformClick();
+            }
         }
     }
 }

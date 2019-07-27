@@ -146,7 +146,7 @@ namespace DAL
             try
             {
 
-                string command = string.Format("Select ID, Nome from Farda where group by Nome");
+                string command = string.Format("Select ID, Nome from Farda group by Nome");
                 MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
 
                 Dictionary<string, int> LFarda = new Dictionary<string, int>();
@@ -169,5 +169,38 @@ namespace DAL
                 Con.Fechar();
             }
         }
+        public Dictionary<string, int> ListarVestuarioNomeID(Farda farda)
+        {
+            try
+            {
+
+                string command = string.Format("Select Vestuario.ID, Vestuario.Nome from Vestuario inner join Vestuario_Farda " +
+                    "on Vestuario_Farda.Id_Vestuario=Vestuario.ID inner join Farda on Farda.ID=Vestuario_Farda.Id_Farda " +
+                    "where Farda.ID=@ID group by Vestuario.Nome");
+                MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+
+                cmdInsert.Parameters.Add("@ID", MySqlDbType.Int16).Value = farda.ID;
+
+                Dictionary<string, int> LVestuario = new Dictionary<string, int>();
+                using (var reader = cmdInsert.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        LVestuario.Add(reader.GetString("Nome"), reader.GetInt32("ID"));
+                    }
+                }
+
+                return LVestuario;
+            }
+            catch
+            {
+                return new Dictionary<string, int>();
+            }
+            finally
+            {
+                Con.Fechar();
+            }
+        }
+
     }
 }

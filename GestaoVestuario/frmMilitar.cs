@@ -18,6 +18,15 @@ namespace GestaoVestuario
         bool isUpdate = false;
 
         Militar militar = new Militar();
+
+        private int IdNumeroEditar = 0;
+
+        Dictionary<string, int> LMilitar = new Dictionary<string, int>();
+        Dictionary<string, int> LFarda = new Dictionary<string, int>();
+        Dictionary<string, int> LVestuario = new Dictionary<string, int>();
+        Dictionary<string, int> LNumero = new Dictionary<string, int>();
+        
+
         public frmMilitar(int index)
         {
             InitializeComponent();
@@ -35,6 +44,11 @@ namespace GestaoVestuario
         {
             LimparGeral();
             Selecionar(new Militar());
+
+
+            cbFarda.Items.Clear();
+            LFarda = new NFarda().ListarNomeID();
+            cbFarda.Items.AddRange(LFarda.Keys.ToArray());
         }
 
         //Método Hablitar todoso os controles do formulário
@@ -75,6 +89,8 @@ namespace GestaoVestuario
         {
             LimparSimples();
 
+            LimparMilitar();
+            
             isInsert = false;
             isUpdate = false;
             HablitarBotons();
@@ -92,6 +108,38 @@ namespace GestaoVestuario
             militar.ID = 0;
         }
 
+        private void LimparNumero()
+        {
+            cbNumero.Items.Clear();
+            cbNumero.Text = null;
+            cbNumero.Enabled = false;
+
+            btnEditarNumero.Enabled = false;
+            btnAdd.Enabled = true;
+            btnRemove.Enabled = true;
+            IdNumeroEditar = 0;
+        }
+        private void LimparVestuario()
+        {
+            cbVestuario.Items.Clear();
+            cbVestuario.Enabled = false;
+            LimparNumero();
+        }
+        private void LimparFarda()
+        {
+            cbFarda.Text = null;
+            cbFarda.Enabled = false;
+            LimparVestuario();
+
+            dgvListaNumero.Rows.Clear();
+        }
+        private void LimparMilitar()
+        {
+            cbMilitar.Items.Clear();
+            LMilitar = new NMilitar().ListarNomeID();
+            cbMilitar.Items.AddRange(LMilitar.Keys.ToArray());
+            LimparFarda();
+        }
         private void Selecionar(Militar militar)
         {
             NMilitar nMilitar = new NMilitar();
@@ -178,6 +226,7 @@ namespace GestaoVestuario
                         return;
                     }
                     LimparSimples();
+                    LimparMilitar();
                 }
                 else
                 {
@@ -233,6 +282,141 @@ namespace GestaoVestuario
             }
         }
 
+        private void cbMilitar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LimparFarda();
+            cbFarda.Enabled = true;
 
+            int id = 0;
+            if (LMilitar.TryGetValue(cbMilitar.Text, out id))
+            {
+                var numerosMilitar = new NMilitar().ListarNumeroMilitar(new Militar(id));
+
+                foreach (var item in numerosMilitar)
+                {
+                    object[] row = { item.ID, item.Farda.Nome, item.NumeroVestuario.Vestuario.Nome, item.NumeroVestuario.Numero};
+                    dgvListaNumero.Rows.Add(row);
+                }
+            }
+        }
+
+        private void cbFarda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelecionarFarda();
+        }
+        private void SelecionarFarda()
+        {
+            LimparVestuario();
+            int id = 0;
+            if (LFarda.TryGetValue(cbFarda.Text, out id))
+            {
+                LVestuario = new NFarda().ListarVestuarioNomeID(new Farda(id));
+
+                foreach (string item in LVestuario.Keys)
+                {
+                    bool inserir = true;
+                    foreach (DataGridViewRow dgvrows in dgvListaNumero.Rows)
+                    {
+                        if ((dgvrows.Cells["Farda"].Value.ToString().Equals(cbFarda.Text))
+                            && dgvrows.Cells["Vestuario"].Value.ToString().Equals(item))
+                        {
+                            inserir = false;
+                            break;
+                        }
+                    }
+                    if (inserir)
+                        cbVestuario.Items.Add(item);
+                }
+
+
+
+                cbVestuario.Enabled = true;
+            }
+        }
+
+        private void cbVestuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LimparNumero();
+            int id = 0;
+            if (LVestuario.TryGetValue(cbVestuario.Text, out id))
+            {
+                LNumero = new NVestuario().ListarNumerosNomeID(new Vestuario(id));
+                cbNumero.Items.AddRange(LNumero.Keys.ToArray());
+                cbNumero.Enabled = true;
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            int idNumero = 0;
+            int idVestuario = 0;
+            int idFarda = 0;
+            int idMilitar = 0;
+            if ((LNumero.TryGetValue(cbNumero.Text, out idNumero))&&(LVestuario.TryGetValue(cbVestuario.Text, out idVestuario))
+                &&(LFarda.TryGetValue(cbFarda.Text, out idFarda)) &&(LMilitar.TryGetValue(cbMilitar.Text, out idMilitar)))
+            {
+                string resposta = new NMilitar().InsertNumero(new NumeroMilitar(new Militar(idMilitar), new NumeroVestuario(idNumero), new Farda(idFarda)));
+
+                int idNumeroMilitar = 0;
+                if (!int.TryParse(resposta, out idNumeroMilitar))
+                {
+                    MessageBox.Show("Não foi possível gravar o Número do Militar.\r\n" + resposta, ElementosEstaticos.Unidade.Nome, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    object[] items = { idNumeroMilitar, cbFarda.Text, cbVestuario.Text, cbNumero.Text };
+                    dgvListaNumero.Rows.Add(items);
+                    cbVestuario.Items.Remove(cbVestuario.Text);
+                    cbVestuario.Text = null;
+                    LimparNumero();
+                }
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            int id = (int)dgvListaNumero.CurrentRow.Cells["ID"].Value;
+            string resposta = new NNumeroMilitar().Delete(new NumeroMilitar(id));
+            if (resposta.Equals("OK"))
+            {
+                dgvListaNumero.Rows.Remove(dgvListaNumero.CurrentRow);
+                SelecionarFarda();
+            }
+            else
+            {
+                MessageBox.Show("Não foi possível Eliminar o Número do Militar.\r\n" + resposta, ElementosEstaticos.Unidade.Nome, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSelecionarNumero_Click(object sender, EventArgs e)
+        {
+            cbMilitar.Text = dgvLista.CurrentRow.Cells["Militar"].Value.ToString();
+            tabControl1.SelectedIndex = 2;
+        }
+
+        private void dgvListaNumero_DoubleClick(object sender, EventArgs e)
+        {
+            int idmiliatar = 0;
+            if (LMilitar.TryGetValue(cbMilitar.Text, out idmiliatar))
+            {
+                LimparNumero();
+                IdNumeroEditar = (int)dgvListaNumero.CurrentRow.Cells["Farda"].Value;
+                cbFarda.Text = dgvListaNumero.CurrentRow.Cells["Farda"].Value.ToString();
+                cbVestuario.Text = dgvListaNumero.CurrentRow.Cells["Vestuario"].Value.ToString();
+                cbNumero.Text = dgvListaNumero.CurrentRow.Cells["Numero"].Value.ToString();
+
+                btnAdd.Enabled = false;
+                btnRemove.Enabled = true;
+                btnEditarNumero.Enabled = true;
+            }
+        }
+
+        private void btnEditarNumero_Click(object sender, EventArgs e)
+        {
+            if (true)
+            {
+
+            }
+        }
     }
 }

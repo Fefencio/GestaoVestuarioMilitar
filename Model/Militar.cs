@@ -21,6 +21,15 @@ namespace Model
         {
 
         }
+        public Militar(int id)
+        {
+            this.ID = id;
+        }
+        public Militar(int id, string nome)
+        {
+            this.ID = id;
+            this.Nome = nome;
+        }
         public Militar(string nome, DateTime dataNascimento, string bi, string telefone, string email, string morada, bool estado)
         {
             this.Nome = nome;

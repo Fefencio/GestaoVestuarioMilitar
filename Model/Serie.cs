@@ -24,6 +24,12 @@ namespace Model
         {
             this.ID = id;
         }
+        public Serie(int id, string nome)
+        {
+
+            this.Nome = nome;
+            this.ID = id;
+        }
         public Serie(string nome, string descricao, DateTime dataCriacao, DateTime dataInicial, 
             DateTime dataValidade, bool estado)
         {

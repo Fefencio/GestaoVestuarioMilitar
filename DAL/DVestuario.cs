@@ -13,14 +13,31 @@ namespace DAL
         {
             try
             {
-                string command = "Insert into Vestuario(Nome, Descricao) values(@Nome, @Descricao)";
-                MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+                using (MySqlTransaction trans = Con.Abrir().BeginTransaction())
+                {
+                    string command = "Insert into Vestuario(Nome, Descricao) values(@Nome, @Descricao)";
+                    MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+                    cmdInsert.Transaction = trans;
 
-                cmdInsert.Parameters.Add("@Nome", MySqlDbType.VarChar).Value = vestuario.Nome;
-                cmdInsert.Parameters.Add("@Descricao", MySqlDbType.VarChar).Value = vestuario.Descricao;
+                    cmdInsert.Parameters.Add("@Nome", MySqlDbType.VarChar).Value = vestuario.Nome;
+                    cmdInsert.Parameters.Add("@Descricao", MySqlDbType.VarChar).Value = vestuario.Descricao;
 
-                cmdInsert.ExecuteNonQuery();
-                return cmdInsert.LastInsertedId.ToString();
+                    cmdInsert.ExecuteNonQuery();
+                    int id = (int)cmdInsert.LastInsertedId;
+
+                    cmdInsert.Parameters.Add("@ID", MySqlDbType.Int16).Value = id;
+                    cmdInsert.Parameters.Add("@Numero", MySqlDbType.VarChar);
+                    cmdInsert.CommandText = "Insert into Numero_Vestuario(Id_Vestuario, Numero) values (@ID, @Numero)";
+
+                    foreach (var item in vestuario.Numeros)
+                    {
+                        cmdInsert.Parameters["@Numero"].Value = item.Numero;
+                        cmdInsert.ExecuteNonQuery();
+                    }
+                    trans.Commit();
+
+                    return id.ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -35,15 +52,41 @@ namespace DAL
         {
             try
             {
-                string command = "Update Vestuario set Nome=@Nome, Descricao=@Descricao where ID=@ID";
-                MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+                using (MySqlTransaction trans = Con.Abrir().BeginTransaction())
+                {
+                    string command = "Update Vestuario set Nome=@Nome, Descricao=@Descricao where ID=@IdVestuario";
+                    MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+                    cmdInsert.Transaction = trans;
 
-                cmdInsert.Parameters.Add("@ID", MySqlDbType.Int16).Value = vestuario.ID;
-                cmdInsert.Parameters.Add("@Nome", MySqlDbType.VarChar).Value = vestuario.Nome;
-                cmdInsert.Parameters.Add("@Descricao", MySqlDbType.VarChar).Value = vestuario.Descricao;
+                    cmdInsert.Parameters.Add("@IdVestuario", MySqlDbType.Int16).Value = vestuario.ID;
+                    cmdInsert.Parameters.Add("@Nome", MySqlDbType.VarChar).Value = vestuario.Nome;
+                    cmdInsert.Parameters.Add("@Descricao", MySqlDbType.VarChar).Value = vestuario.Descricao;
 
-                cmdInsert.ExecuteNonQuery();
-                return "OK";
+                    cmdInsert.ExecuteNonQuery();
+                    cmdInsert.Parameters.Add("@ID", MySqlDbType.Int16).Value = 0;
+
+                    cmdInsert.Parameters.Add("@Numero", MySqlDbType.VarChar);
+                    
+                    foreach (var item in vestuario.Numeros)
+                    {
+                        if (item.ID == 0)
+                        {
+                            cmdInsert.CommandText = "Insert into Numero_Vestuario(Id_Vestuario, Numero) values (@IdVestuario, @Numero)";
+                            cmdInsert.Parameters["@Numero"].Value = item.Numero;
+                        }
+                        else
+                        {
+                            cmdInsert.Parameters["ID"].Value = item.ID;
+                            cmdInsert.CommandText = "Update set Numero=@Numero where ID=@ID)";
+                            cmdInsert.Parameters["@Numero"].Value = item.Numero;
+                        }
+                        
+                        cmdInsert.ExecuteNonQuery();
+                    }
+                    trans.Commit();
+
+                    return "OK";
+                }
             }
             catch (Exception ex)
             {
@@ -79,7 +122,10 @@ namespace DAL
         {
             try
             {
-                string command = string.Format("Select ID, Nome as Vestuario, Descricao as 'Descrição' from Vestuario where Nome like @Nome order by Nome");
+                string command = string.Format("Select Vestuario.ID, Vestuario.Nome as Vestuario, Vestuario.Descricao as 'Descrição', " +
+                    "group_Concat(Numero_Vestuario.numero) as Numeros from Vestuario left join Numero_Vestuario on " +
+                    "Numero_Vestuario.Id_Vestuario=Vestuario.ID where Vestuario.Nome like @Nome group by Vestuario.Nome " +
+                    "order by Vestuario.Nome");
                 MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
 
                 cmdInsert.Parameters.Add("@Nome", MySqlDbType.VarChar).Value = vestuario.Nome + "%";
@@ -113,7 +159,7 @@ namespace DAL
                     if (reader.Read())
                     {
                         vestuario = new Vestuario(reader.GetInt32("ID"), reader.GetString("Nome"),
-                            reader.GetString("Descricao"));
+                            reader.GetString("Descricao"), null);
                     }
                 }
 
@@ -156,5 +202,36 @@ namespace DAL
                 Con.Fechar();
             }
         }
+        public Dictionary<string, int> ListarNumerosNomeID(Vestuario vestuario)
+        {
+            try
+            {
+
+                string command = string.Format("Select ID, Numero from Numero_Vestuario where Id_Vestuario=@ID group by Numero");
+                MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+
+                cmdInsert.Parameters.Add("@ID", MySqlDbType.Int16).Value = vestuario.ID;
+
+                Dictionary<string, int> LNumeros = new Dictionary<string, int>();
+                using (var reader = cmdInsert.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        LNumeros.Add(reader.GetString("Numero"), reader.GetInt32("ID"));
+                    }
+                }
+
+                return LNumeros;
+            }
+            catch
+            {
+                return new Dictionary<string, int>();
+            }
+            finally
+            {
+                Con.Fechar();
+            }
+        }
+
     }
 }

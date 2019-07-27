@@ -40,6 +40,31 @@ namespace DAL
                 Con.Fechar();
             }
         }
+        public string InsertNumero(NumeroMilitar numeroMilitar)
+        {
+            try
+            {
+                string command = "Insert into Militar_Numero(Id_Militar, Id_Numero_Vestuario, Id_Farda)" +
+                    " values(@Id_Militar, @Id_Numero_Vestuario, @Id_Farda)";
+                MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+
+                cmdInsert.Parameters.Add("@Id_Militar", MySqlDbType.VarChar).Value = numeroMilitar.Militar.ID;
+                cmdInsert.Parameters.Add("@Id_Numero_Vestuario", MySqlDbType.VarChar).Value = numeroMilitar.NumeroVestuario.ID;
+                cmdInsert.Parameters.Add("@Id_Farda", MySqlDbType.VarChar).Value = numeroMilitar.Farda.ID;
+
+                cmdInsert.ExecuteNonQuery();
+                return cmdInsert.LastInsertedId.ToString();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            finally
+            {
+                Con.Fechar();
+            }
+        }
+
         public string Update(Militar militar)
         {
             try
@@ -157,6 +182,49 @@ namespace DAL
                 Con.Fechar();
             }
         }
+        public List<NumeroMilitar> ListarNumeroMilitar(Militar militar)
+        {
+            try
+            {
 
+                string command = string.Format("Select Militar_Numero.ID, Militar.ID as IdMilitar, Militar.Nome as " +
+                    "Militar, Farda.ID as IdFarda, Farda.Nome as Farda, Numero_Vestuario.ID as IdNumeroVestuario, " +
+                    "Vestuario.ID as IdVestuario, Vestuario.Nome as Vestuario, Numero_Vestuario.Numero " +
+                    "from Militar_Numero inner join Militar on Militar.ID=Militar_Numero.Id_Militar inner join Farda " +
+                    "on Farda.ID=Militar_Numero.Id_Farda inner join Numero_Vestuario on Numero_Vestuario.ID=" +
+                    "Militar_Numero.Id_Numero_Vestuario inner join Vestuario on Numero_Vestuario.Id_Vestuario=" +
+                    "Vestuario.ID where Militar.ID=@IdMilitar group by Numero_Vestuario.ID order by Farda.Nome");
+                MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+
+                cmdInsert.Parameters.Add("@IdMilitar", MySqlDbType.Int32).Value = militar.ID;
+
+                List<NumeroMilitar> LNumeroMilitar = new List<NumeroMilitar>();
+                using (var reader = cmdInsert.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Militar militarN = new Militar(reader.GetInt32("IdMilitar"), reader.GetString("Militar"));
+                        Farda farda = new Farda(reader.GetInt32("IdFarda"), reader.GetString("Farda"));
+                        Vestuario vestuario = new Vestuario(reader.GetInt32("IdVestuario"), reader.GetString("Vestuario"));
+                        NumeroVestuario numeroVestuario = new NumeroVestuario(reader.GetInt32("IdNumeroVestuario"), 
+                            vestuario, reader.GetString("Numero"));
+
+                        NumeroMilitar numeroMilitar = new NumeroMilitar(reader.GetInt32("ID"), militarN, numeroVestuario, farda);
+
+                        LNumeroMilitar.Add(numeroMilitar);
+                    }
+                }
+
+                return LNumeroMilitar;
+            }
+            catch
+            {
+                return new List<NumeroMilitar>();
+            }
+            finally
+            {
+                Con.Fechar();
+            }
+        }
     }
 }

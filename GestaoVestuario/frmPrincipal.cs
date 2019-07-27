@@ -12,9 +12,20 @@ namespace GestaoVestuario
 {
     public partial class frmPrincipal : Form
     {
+        private bool Fechar = true;
         public frmPrincipal()
         {
             InitializeComponent();
+            tsFuncionario.Text = Model.ElementosEstaticos.Militar.Nome;
+            lbEmpresa.Text = Model.ElementosEstaticos.Unidade.Nome;
+        }
+
+        private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Fechar)
+            {
+                Application.Exit();
+            }
         }
 
         private void ChamarForm(Form frmChamar)
@@ -33,7 +44,6 @@ namespace GestaoVestuario
 
         private void tsUser_ButtonClick(object sender, EventArgs e)
         {
-            MessageBox.Show(this.Width.ToString() + "     " + this.Height.ToString());
         }
 
         private void cadastrarMilitarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,6 +74,42 @@ namespace GestaoVestuario
         private void listarVestuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChamarForm(new frmVestuario(0));
+        }
+
+        private void empresaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void tsDistribuirVestuario_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void tsEncomenda_Click(object sender, EventArgs e)
+        {
+            ChamarForm(new frmEncomenda());
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            tsData.Text = DateTime.Now.ToLongDateString();
+            tsHora.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void ecomendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChamarForm(new frmEntrarEncomenda());
+        }
+
+        private void fecharAplicaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void terminarSessãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms.Cast<Form>().Where(x => x.Name.Equals("frmLogin")).First().Visible=true;
+            Fechar = false;
+            this.Close();
         }
     }
 }

@@ -53,6 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmEncomenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEncomenda.Designer.cs">
+      <DependentUpon>frmEncomenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEntrarEncomenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEntrarEncomenda.Designer.cs">
+      <DependentUpon>frmEntrarEncomenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFarda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +109,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmEncomenda.resx">
+      <DependentUpon>frmEncomenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEntrarEncomenda.resx">
+      <DependentUpon>frmEntrarEncomenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFarda.resx">
       <DependentUpon>frmFarda.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +163,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{22493F17-6969-4D54-89A1-B24556352893}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImpressaoRelatorio\ImpressaoRelatorio.csproj">
+      <Project>{b0eccca8-e95d-4823-824a-a852733c4e9b}</Project>
+      <Name>ImpressaoRelatorio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{B21A027A-61EF-414C-996F-FCCA4A1805F6}</Project>
@@ -195,6 +217,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Foras-Armadas-Angolana.ico" />
+    <None Include="Resources\army-305276_1280.png" />
+    <None Include="Resources\camouflage-145980_1280.png" />
+    <None Include="Resources\camouflage-33708_1280.png" />
+    <None Include="Resources\Borda Button.png" />
+    <None Include="Resources\Fundopng.png" />
+    <None Include="Resources\formulario-de-login-e-cadastro-com-html5-e-css3-1522145690.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

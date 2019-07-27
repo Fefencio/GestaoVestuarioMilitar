@@ -28,6 +28,10 @@ namespace BLL
         {
             return DSerie.Select(serie);
         }
+        public Dictionary<string, int> ListarNomeID()
+        {
+            return DSerie.ListarNomeID();
+        }
     }
 
 }

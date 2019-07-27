@@ -12,6 +12,10 @@ namespace BLL
         {
             return DMilitar.Insert(militar);
         }
+        public string InsertNumero(NumeroMilitar numeroMilitar)
+        {
+            return DMilitar.InsertNumero(numeroMilitar);
+        }
         public string Update(Militar militar)
         {
             return DMilitar.Update(militar);
@@ -27,6 +31,10 @@ namespace BLL
         public Dictionary<string, int> ListarNomeID()
         {
             return DMilitar.ListarNomeID();
+        }
+        public List<NumeroMilitar> ListarNumeroMilitar(Militar militar)
+        {
+            return DMilitar.ListarNumeroMilitar(militar);
         }
     }
 }

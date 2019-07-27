@@ -33,6 +33,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.saídaDeProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entradaDeProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ecomendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.singularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gerirStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MovimentoDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +71,8 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pratoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarVestuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listarVestuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.militarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarMilitarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarMilitarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,8 +94,6 @@
             this.servidorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSeries = new System.Windows.Forms.ToolStripMenuItem();
             this.numerosDeVestuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadastrarVestuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listarVestuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -110,9 +112,25 @@
             // 
             // entradaDeProdutoToolStripMenuItem
             // 
+            this.entradaDeProdutoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ecomendaToolStripMenuItem,
+            this.singularToolStripMenuItem});
             this.entradaDeProdutoToolStripMenuItem.Name = "entradaDeProdutoToolStripMenuItem";
             this.entradaDeProdutoToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.entradaDeProdutoToolStripMenuItem.Text = "Entrada de Produto";
+            // 
+            // ecomendaToolStripMenuItem
+            // 
+            this.ecomendaToolStripMenuItem.Name = "ecomendaToolStripMenuItem";
+            this.ecomendaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ecomendaToolStripMenuItem.Text = "Encomenda";
+            this.ecomendaToolStripMenuItem.Click += new System.EventHandler(this.ecomendaToolStripMenuItem_Click);
+            // 
+            // singularToolStripMenuItem
+            // 
+            this.singularToolStripMenuItem.Name = "singularToolStripMenuItem";
+            this.singularToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.singularToolStripMenuItem.Text = "Singular";
             // 
             // inventárioToolStripMenuItem
             // 
@@ -283,6 +301,7 @@
             this.tsDistribuirVestuario.Size = new System.Drawing.Size(110, 83);
             this.tsDistribuirVestuario.Text = "Distribuir Vestuário";
             this.tsDistribuirVestuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsDistribuirVestuario.Click += new System.EventHandler(this.tsDistribuirVestuario_Click);
             // 
             // toolStripSeparator2
             // 
@@ -309,6 +328,7 @@
             this.tsEncomenda.Size = new System.Drawing.Size(68, 83);
             this.tsEncomenda.Text = "Encomenda";
             this.tsEncomenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsEncomenda.Click += new System.EventHandler(this.tsEncomenda_Click);
             // 
             // tsPerda
             // 
@@ -410,6 +430,7 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // pratoToolStripMenuItem
             // 
@@ -419,6 +440,20 @@
             this.pratoToolStripMenuItem.Name = "pratoToolStripMenuItem";
             this.pratoToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.pratoToolStripMenuItem.Text = "Vestuario";
+            // 
+            // cadastrarVestuarioToolStripMenuItem
+            // 
+            this.cadastrarVestuarioToolStripMenuItem.Name = "cadastrarVestuarioToolStripMenuItem";
+            this.cadastrarVestuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarVestuarioToolStripMenuItem.Text = "Cadastrar Vestuarios";
+            this.cadastrarVestuarioToolStripMenuItem.Click += new System.EventHandler(this.cadastrarVestuarioToolStripMenuItem_Click);
+            // 
+            // listarVestuariosToolStripMenuItem
+            // 
+            this.listarVestuariosToolStripMenuItem.Name = "listarVestuariosToolStripMenuItem";
+            this.listarVestuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listarVestuariosToolStripMenuItem.Text = "Listar Vestuarios";
+            this.listarVestuariosToolStripMenuItem.Click += new System.EventHandler(this.listarVestuariosToolStripMenuItem_Click);
             // 
             // militarToolStripMenuItem
             // 
@@ -446,19 +481,21 @@
             // fecharAplicaçãoToolStripMenuItem
             // 
             this.fecharAplicaçãoToolStripMenuItem.Name = "fecharAplicaçãoToolStripMenuItem";
-            this.fecharAplicaçãoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.fecharAplicaçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fecharAplicaçãoToolStripMenuItem.Text = "Fechar Aplicação";
+            this.fecharAplicaçãoToolStripMenuItem.Click += new System.EventHandler(this.fecharAplicaçãoToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(161, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
             // 
             // terminarSessãoToolStripMenuItem
             // 
             this.terminarSessãoToolStripMenuItem.Name = "terminarSessãoToolStripMenuItem";
-            this.terminarSessãoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.terminarSessãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.terminarSessãoToolStripMenuItem.Text = "Terminar Sessão";
+            this.terminarSessãoToolStripMenuItem.Click += new System.EventHandler(this.terminarSessãoToolStripMenuItem_Click);
             // 
             // sistemaToolStripMenuItem
             // 
@@ -500,14 +537,14 @@
             // cadastrarFardaToolStripMenuItem
             // 
             this.cadastrarFardaToolStripMenuItem.Name = "cadastrarFardaToolStripMenuItem";
-            this.cadastrarFardaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarFardaToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.cadastrarFardaToolStripMenuItem.Text = "Cadastrar Farda";
             this.cadastrarFardaToolStripMenuItem.Click += new System.EventHandler(this.cadastrarFardaToolStripMenuItem_Click);
             // 
             // listaDeFardasToolStripMenuItem
             // 
             this.listaDeFardasToolStripMenuItem.Name = "listaDeFardasToolStripMenuItem";
-            this.listaDeFardasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listaDeFardasToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.listaDeFardasToolStripMenuItem.Text = "Lista de Fardas";
             this.listaDeFardasToolStripMenuItem.Click += new System.EventHandler(this.listaDeFardasToolStripMenuItem_Click);
             // 
@@ -562,7 +599,8 @@
             // 
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
             this.empresaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.empresaToolStripMenuItem.Text = "Unidade";
+            this.empresaToolStripMenuItem.Text = "Numeros";
+            this.empresaToolStripMenuItem.Click += new System.EventHandler(this.empresaToolStripMenuItem_Click);
             // 
             // servidorToolStripMenuItem
             // 
@@ -585,20 +623,6 @@
             this.numerosDeVestuárioToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.numerosDeVestuárioToolStripMenuItem.Text = "Numeros de Vestuário";
             // 
-            // cadastrarVestuarioToolStripMenuItem
-            // 
-            this.cadastrarVestuarioToolStripMenuItem.Name = "cadastrarVestuarioToolStripMenuItem";
-            this.cadastrarVestuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cadastrarVestuarioToolStripMenuItem.Text = "Cadastrar Vestuarios";
-            this.cadastrarVestuarioToolStripMenuItem.Click += new System.EventHandler(this.cadastrarVestuarioToolStripMenuItem_Click);
-            // 
-            // listarVestuariosToolStripMenuItem
-            // 
-            this.listarVestuariosToolStripMenuItem.Name = "listarVestuariosToolStripMenuItem";
-            this.listarVestuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listarVestuariosToolStripMenuItem.Text = "Listar Vestuarios";
-            this.listarVestuariosToolStripMenuItem.Click += new System.EventHandler(this.listarVestuariosToolStripMenuItem_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,6 +641,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Gestão de Vestuários das Forças Armadas Angolana";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPrincipal_FormClosed);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -692,5 +717,7 @@
         private System.Windows.Forms.ToolStripMenuItem listaDeFardasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastrarVestuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listarVestuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ecomendaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem singularToolStripMenuItem;
     }
 }

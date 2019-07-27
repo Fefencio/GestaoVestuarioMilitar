@@ -134,9 +134,69 @@ namespace GestaoVestuario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap army_305276_1280 {
+            get {
+                object obj = ResourceManager.GetObject("army-305276_1280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Borda_Button {
+            get {
+                object obj = ResourceManager.GetObject("Borda Button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap camouflage_145980_1280 {
+            get {
+                object obj = ResourceManager.GetObject("camouflage-145980_1280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap camouflage_33708_1280 {
+            get {
+                object obj = ResourceManager.GetObject("camouflage-33708_1280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Entrega {
             get {
                 object obj = ResourceManager.GetObject("Entrega", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap formulario_de_login_e_cadastro_com_html5_e_css3_1522145690 {
+            get {
+                object obj = ResourceManager.GetObject("formulario-de-login-e-cadastro-com-html5-e-css3-1522145690", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fundopng {
+            get {
+                object obj = ResourceManager.GetObject("Fundopng", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

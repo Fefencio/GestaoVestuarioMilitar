@@ -9,25 +9,31 @@ namespace Model
     public class MovimentoStock
     {
         public int ID { get; set; }
-        public int IdStockVestuarioFarda { get; set; }
-        public string TipoMovimento { get; set; }
+        public StockVestuarioFarda StockVestuarioFarda { get; set; }
+        public EnumList.TipoMovimento TipoMovimento { get; set; }
         public double Quantidade { get; set; }
         public string Descricao { get; set; }
-        public int IdMilitar { get; set; }
+        public Militar Militar { get; set; }
+        public DateTime DataMovimento { get; set; }
 
         public MovimentoStock()
         {
 
         }
-
-        public MovimentoStock(int id, int idStockVestuarioFarda, string tipoMovimento, double quantidade, string descricao, int idMilitar)
+        public MovimentoStock(StockVestuarioFarda stockVestuarioFarda, EnumList.TipoMovimento tipoMovimento, double quantidade, string descricao, DateTime dataMovimento, Militar militar)
         {
-            this.ID = id;
-            this.IdStockVestuarioFarda = idStockVestuarioFarda;
+            this.StockVestuarioFarda = stockVestuarioFarda;
             this.TipoMovimento = tipoMovimento;
             this.Quantidade = quantidade;
             this.Descricao = descricao;
-            this.IdMilitar = idMilitar;
+            this.DataMovimento = dataMovimento;
+            this.Militar = militar;
+        }
+        public MovimentoStock(int id, StockVestuarioFarda stockVestuarioFarda, EnumList.TipoMovimento tipoMovimento, double quantidade, 
+            string descricao,DateTime dataMovimento, Militar militar)
+            : this(stockVestuarioFarda, tipoMovimento, quantidade, descricao, dataMovimento, militar)
+        {
+            this.ID = id;
         }
     }
 }

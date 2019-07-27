@@ -9,17 +9,34 @@ namespace Model
     public class NumeroVestuario
     {
         public int ID { get; set; }
+        public Vestuario Vestuario { get; set; }
         public string Numero { get; set; }
-        public string Descricao { get; set; }
+
         public NumeroVestuario()
         {
 
         }
-        public NumeroVestuario(int id, string numero, string descricao)
+        public NumeroVestuario(int id)
+        {
+            this.ID = id;
+        }
+        public NumeroVestuario(string numero)
+        {
+            this.Numero = numero;
+        }
+        public NumeroVestuario(int id, string numero)
         {
             this.ID = id;
             this.Numero = numero;
-            this.Descricao = descricao;
+        }
+        public NumeroVestuario(string numero, Vestuario vestuario)
+        {
+            this.Vestuario = vestuario;
+            this.Numero = numero;
+        }
+        public NumeroVestuario(int id, Vestuario vestuario, string numero) : this(numero, vestuario)
+        {
+            this.ID = id;
         }
     }
 }

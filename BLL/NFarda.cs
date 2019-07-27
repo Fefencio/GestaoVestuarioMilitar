@@ -28,5 +28,9 @@ namespace BLL
         {
             return DFarda.ListarNomeID();
         }
+        public Dictionary<string, int> ListarVestuarioNomeID(Farda farda)
+        {
+            return DFarda.ListarVestuarioNomeID(farda);
+        }
     }
 }

@@ -127,8 +127,20 @@
   <data name="46057" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\46057.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="camouflage-33708_1280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\camouflage-33708_1280.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fundopng" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fundopng.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="formulario-de-login-e-cadastro-com-html5-e-css3-1522145690" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\formulario-de-login-e-cadastro-com-html5-e-css3-1522145690.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="20494" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\20494.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="camouflage-145980_1280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\camouflage-145980_1280.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SummerIcons-66-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SummerIcons-66-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,11 +157,17 @@
   <data name="kisspng-logistics-computer-icons-delivery-freight-transpor-icon-png-logistic-download-5ab0d189d500c9.0724130315215374178725" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\kisspng-logistics-computer-icons-delivery-freight-transpor-icon-png-logistic-download-5ab0d189d500c9.0724130315215374178725.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="general-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\general-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="27586" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\27586.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="46139" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\46139.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Borda Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Borda Button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="126441" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\126441.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,7 +175,7 @@
   <data name="img_12209" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_12209.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="general-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\general-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="army-305276_1280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\army-305276_1280.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -127,5 +127,34 @@ namespace DAL
                 Con.Fechar();
             }
         }
+        public Dictionary<string, int> ListarNomeID()
+        {
+            try
+            {
+
+                string command = string.Format("Select ID, Nome from Serie where Estado=true group by Nome");
+                MySqlCommand cmdInsert = new MySqlCommand(command, Con.Abrir());
+
+                Dictionary<string, int> LMilitar = new Dictionary<string, int>();
+                using (var reader = cmdInsert.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        LMilitar.Add(reader.GetString("Nome"), reader.GetInt32("ID"));
+                    }
+                }
+
+                return LMilitar;
+            }
+            catch
+            {
+                return new Dictionary<string, int>();
+            }
+            finally
+            {
+                Con.Fechar();
+            }
+        }
+
     }
 }

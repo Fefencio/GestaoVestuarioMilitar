@@ -42,9 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NEcomenda.cs" />
     <Compile Include="NFarda.cs" />
     <Compile Include="NMilitar.cs" />
+    <Compile Include="NNumeroMilitar.cs" />
     <Compile Include="NSerie.cs" />
+    <Compile Include="NStock.cs" />
+    <Compile Include="NUtilizador.cs" />
     <Compile Include="NVestuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

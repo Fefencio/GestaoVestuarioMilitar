@@ -45,11 +45,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexao.cs" />
+    <Compile Include="DEcomenda.cs" />
     <Compile Include="DFarda.cs" />
     <Compile Include="DMilitar.cs" />
+    <Compile Include="DNumeroMilitar.cs" />
     <Compile Include="DSerie.cs" />
+    <Compile Include="DStock.cs" />
+    <Compile Include="DUtilizador.cs" />
     <Compile Include="DVestuario.cs" />
     <Compile Include="ICRUD.cs" />
+    <Compile Include="DNumeroVestuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

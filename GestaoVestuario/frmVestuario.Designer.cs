@@ -49,6 +49,12 @@
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lbNumeros = new System.Windows.Forms.ListBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -71,6 +77,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtNumero);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.btnRemove);
+            this.tabPage2.Controls.Add(this.btnAdd);
+            this.tabPage2.Controls.Add(this.lbNumeros);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.txtDescricao);
@@ -88,7 +100,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(109, 111);
+            this.label6.Location = new System.Drawing.Point(109, 108);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 19);
             this.label6.TabIndex = 10;
@@ -107,11 +119,11 @@
             // txtDescricao
             // 
             this.txtDescricao.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtDescricao.Location = new System.Drawing.Point(189, 108);
+            this.txtDescricao.Location = new System.Drawing.Point(189, 105);
             this.txtDescricao.MaxLength = 256;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(384, 90);
+            this.txtDescricao.Size = new System.Drawing.Size(384, 39);
             this.txtDescricao.TabIndex = 6;
             // 
             // txtNome
@@ -265,6 +277,75 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(147, 201);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 19);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Lista";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(117, 163);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 19);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Números";
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Arial Unicode MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.ForeColor = System.Drawing.Color.Red;
+            this.btnRemove.Location = new System.Drawing.Point(524, 160);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(49, 26);
+            this.btnRemove.TabIndex = 20;
+            this.btnRemove.Text = "Rem";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Arial Unicode MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnAdd.Location = new System.Drawing.Point(467, 160);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(49, 26);
+            this.btnAdd.TabIndex = 19;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lbNumeros
+            // 
+            this.lbNumeros.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbNumeros.FormattingEnabled = true;
+            this.lbNumeros.ItemHeight = 18;
+            this.lbNumeros.Location = new System.Drawing.Point(189, 201);
+            this.lbNumeros.Name = "lbNumeros";
+            this.lbNumeros.Size = new System.Drawing.Size(384, 58);
+            this.lbNumeros.TabIndex = 18;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNumero.Location = new System.Drawing.Point(189, 160);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(272, 25);
+            this.txtNumero.TabIndex = 23;
+            this.txtNumero.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumero_KeyDown);
+            // 
             // frmVestuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +355,7 @@
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVestuario";
+            this.ShowIcon = false;
             this.Text = "frmVestuario";
             this.Shown += new System.EventHandler(this.frmVestuario_Shown);
             this.tabPage2.ResumeLayout(false);
@@ -311,5 +393,11 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.DataGridView dgvLista;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ListBox lbNumeros;
+        private System.Windows.Forms.TextBox txtNumero;
     }
 }

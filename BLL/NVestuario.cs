@@ -32,6 +32,9 @@ namespace BLL
         {
             return DVestuario.ListarNomeID();
         }
-
+        public Dictionary<string, int> ListarNumerosNomeID(Vestuario vestuario)
+        {
+            return DVestuario.ListarNumerosNomeID(vestuario);
+        }
     }
 }

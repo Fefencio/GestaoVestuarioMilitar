@@ -18,6 +18,11 @@ namespace Model
         {
 
         }
+        public Utilizador(string usuario, string senha)
+        {
+            this.Usuario = usuario;
+            this.Senha = senha;
+        }
         public Utilizador(int id, int idMilitar,  string usuario, string senha, int idNivel)
         {
             this.ID = id;

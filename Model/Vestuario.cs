@@ -12,6 +12,7 @@ namespace Model
         public int ID { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public List<NumeroVestuario> Numeros { get; set; }
 
         public Vestuario()
         {
@@ -21,17 +22,22 @@ namespace Model
         {
             this.ID = id;
         }
-        public Vestuario(int id, string nome, string descricao)
+        public Vestuario(int id, string nome)
         {
             this.ID = id;
             this.Nome = nome;
-            this.Descricao = descricao;
+        }
+        public Vestuario(int id, string nome, string descricao, List<NumeroVestuario> numeros)
+            : this(nome, descricao, numeros)
+        {
+            this.ID = id;
         }
 
-        public Vestuario(string nome, string descricao)
+        public Vestuario(string nome, string descricao, List<NumeroVestuario> numeros)
         {
             Nome = nome;
             Descricao = descricao;
+            this.Numeros = numeros;
         }
     }
 }

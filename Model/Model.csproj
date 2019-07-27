@@ -44,14 +44,16 @@
   <ItemGroup>
     <Compile Include="Contacto.cs" />
     <Compile Include="DistribuicaoFarda.cs" />
+    <Compile Include="Ecomenda.cs" />
+    <Compile Include="EcomendaItens.cs" />
     <Compile Include="ElementosEstaticos.cs" />
     <Compile Include="Endereco.cs" />
+    <Compile Include="EnumList.cs" />
     <Compile Include="Farda.cs" />
     <Compile Include="Militar.cs" />
-    <Compile Include="MilitarVestuarioFardaNumeroVestuario.cs" />
+    <Compile Include="NumeroMilitar.cs" />
     <Compile Include="MovimentoStock.cs" />
     <Compile Include="NivelAcesso.cs" />
-    <Compile Include="NumeroVestuario.cs" />
     <Compile Include="Permissao.cs" />
     <Compile Include="PermissaoNivelAcesso.cs" />
     <Compile Include="PermissaoUtilizador.cs" />
@@ -63,7 +65,7 @@
     <Compile Include="Vestuario.cs" />
     <Compile Include="VestuarioDistribuicao.cs" />
     <Compile Include="VestuarioFarda.cs" />
-    <Compile Include="VestuarioFardaNumeroVestuario.cs" />
+    <Compile Include="NumeroVestuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

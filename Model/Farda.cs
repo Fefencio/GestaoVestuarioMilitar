@@ -21,6 +21,11 @@ namespace Model
         {
             this.ID = id;
         }
+        public Farda(int id, string nome)
+        {
+            this.ID = id;
+            this.Nome = nome;
+        }
         public Farda(string nome, string descricao, List<Vestuario> vestuarios)
         {
             this.Nome = nome;

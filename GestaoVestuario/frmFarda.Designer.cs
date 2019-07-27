@@ -49,12 +49,12 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbVestuario = new System.Windows.Forms.ComboBox();
             this.lbVestuario = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cbVestuario = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -277,15 +277,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Gestão de Fardas";
             // 
-            // cbVestuario
-            // 
-            this.cbVestuario.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cbVestuario.FormattingEnabled = true;
-            this.cbVestuario.Location = new System.Drawing.Point(188, 151);
-            this.cbVestuario.Name = "cbVestuario";
-            this.cbVestuario.Size = new System.Drawing.Size(272, 26);
-            this.cbVestuario.TabIndex = 11;
-            // 
             // lbVestuario
             // 
             this.lbVestuario.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -346,6 +337,15 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Lista";
             // 
+            // cbVestuario
+            // 
+            this.cbVestuario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbVestuario.FormattingEnabled = true;
+            this.cbVestuario.Location = new System.Drawing.Point(188, 151);
+            this.cbVestuario.Name = "cbVestuario";
+            this.cbVestuario.Size = new System.Drawing.Size(272, 26);
+            this.cbVestuario.TabIndex = 11;
+            // 
             // frmFarda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,11 +393,11 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ListBox lbVestuario;
         private System.Windows.Forms.ComboBox cbVestuario;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
     }
 }
